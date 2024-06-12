@@ -1,0 +1,135 @@
+From e5cd8eff1234bbd2c027928d77f2c9e33c39c0ba Mon Sep 17 00:00:00 2001
+From: Godfred Peprah Owusu <kush.jnr1904@gmail.com>
+Date: Thu, 6 Jun 2024 21:03:09 +0000
+Subject: [PATCH] Create Patch File
+
+---
+ __pycache__/client_test.cpython-39.pyc | Bin 0 -> 1408 bytes
+ client_test.py                         |  48 +++++++++++++------------
+ client3.py => new_client3.py           |   8 +++--
+ 3 files changed, 31 insertions(+), 25 deletions(-)
+ create mode 100644 __pycache__/client_test.cpython-39.pyc
+ rename client3.py => new_client3.py (89%)
+
+diff --git a/__pycache__/client_test.cpython-39.pyc b/__pycache__/client_test.cpython-39.pyc
+new file mode 100644
+index 0000000000000000000000000000000000000000..8db21cfc1dbeacc7c3fdefcbabeb42654c806238
+GIT binary patch
+literal 1408
+zcmdT^OHWfl6rQ<{atj3!Py`I1aYIa-wmcdLF@?6k!XO}SZi+XT&a__oWac(R0xMwS
+zZ(spSHm>~<_y=ZZTo9tafEeRBEea75;?haZch8)ebLKq0T(`ZwmB9KjxSl5gLcZeW
+z`Z8dX1d&q!j4)avHh#4dEo-($$vj~?GxiBHIN8wmblc!2GmDy-;N&Q9OepxgCL@7!
+z@F$BSRD}xMPrJUmRP`!;4z1Uh2Ad>^d<?*eO&PH@MwzxxY`yuCZ7>rfs@7D=;}w6E
+zOFu{9`tPNKf>otJ<OcxsXZoSWz>@_US_`vS@X%zftnKn7#M&=UI`E{R?b02ZCTk13
+z+73A)KHbswK-j%L0@&F{*!_mq^+&s5>m{svfaHy1=+ovjBan5^V&U^Cte0<-=g%Ou
+z6HS>l;pMn8q_@p4`s2~qWH=fR$6~|r_*8UaYBU-dPsGQ@N6&^1zAb+m1jjNsUUWnw
+zvFPMvVr*hEkx0apJ~Nv-F;$CStvRkNs-W+cp)+o|*0imAOlcsd^sBkz*>?zaP=sJO
+z;j@J=+dUt*){^JTuv2<EGbg%06P*aa3nDrI&T%@Bahoe87k*~5?v_NurbGI?l(z$$
+z^{UUMqTUG+gK+yIlbXuDf!i{>lv!GtS;(fjEJBXixmPPQ^O<bED%=7OZ`8`Uu-xKd
+zA94>@3)x&_whjdIBenNx7!~I_b)1}A%GFD*&zG=&COjq^T-N$&|4+lT==Sp~f<*4}
+z|L+)dx|S3;JAsu83n7SrJrHdOA%u2>ZiF6$2M7-ldJ%3JvUr3CeFy^xIK?Imfu>@2
+zHFDNt^Mb=z#Ogb@G9!z~oWCbC{STA55pZ$DRF>mZ+%k6@)#^CqDyx@J4>=BUvUwtg
+zG4m$~S2Z*=EJWa60{bVC-WIijR$Ie{q06pUah#DBWz{R5j}_Z3O+t<~_^zx~u%%q!
+gHHHyS0hEDWw>_n->1Kv6@Gm8CR2B_sU40h)1-`jhlK=n!
+
+literal 0
+HcmV?d00001
+
+diff --git a/client_test.py b/client_test.py
+index c8d9571..a4e1155 100644
+--- a/client_test.py
++++ b/client_test.py
+@@ -1,29 +1,33 @@
+ import unittest
+ from client3 import getDataPoint
+ 
+-class ClientTest(unittest.TestCase):
+-  def test_getDataPoint_calculatePrice(self):
+-    quotes = [
+-      {'top_ask': {'price': 121.2, 'size': 36}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 120.48, 'size': 109}, 'id': '0.109974697771', 'stock': 'ABC'},
+-      {'top_ask': {'price': 121.68, 'size': 4}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 117.87, 'size': 81}, 'id': '0.109974697771', 'stock': 'DEF'}
+-    ]
+-    """ ------------ Add the assertion below ------------ """
+-    for i in quotes:
+-      self.assertEqual(getDataPoint(i), (i['stock'], i['bid_price'], i['ask_price'], (i['bid_price'] + i['ask_price'])/2))
+-
+-  def test_getDataPoint_calculatePriceBidGreaterThanAsk(self):
+-    quotes = [
+-      {'top_ask': {'price': 119.2, 'size': 36}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 120.48, 'size': 109}, 'id': '0.109974697771', 'stock': 'ABC'},
+-      {'top_ask': {'price': 121.68, 'size': 4}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 117.87, 'size': 81}, 'id': '0.109974697771', 'stock': 'DEF'}
+-    ]
+-    """ ------------ Add the assertion below ------------ """
+-    for i in quotes:
+-      self.assertEqual(getDataPoint(i), (i['stock'], i['bid_price'], i['ask_price'], (i['bid_price'] + i['ask_price'])/2))
+-
+-
+-
+-  """ ------------ Add more unit tests ------------ """
+ 
++class ClientTest(unittest.TestCase):
++    def test_getDataPoint_calculatePrice(self):
++        quotes = [
++            {'top_ask': {'price': 121.2, 'size': 36}, 'timestamp': '2019-02-11 22:06:30.572453',
++             'top_bid': {'price': 120.48, 'size': 109}, 'id': '0.109974697771', 'stock': 'ABC'},
++            {'top_ask': {'price': 121.68, 'size': 4}, 'timestamp': '2019-02-11 22:06:30.572453',
++             'top_bid': {'price': 117.87, 'size': 81}, 'id': '0.109974697771', 'stock': 'DEF'}
++        ]
++        """ ------------ Add the assertion below ------------ """
++        for i in quotes:
++            self.assertEqual(getDataPoint(i), (i['stock'], i['top_bid']['price'], i['top_ask']['price'],
++                                               (i['top_bid']['price'] + i['top_ask']['price']) / 2))
++
++    def test_getDataPoint_calculatePriceBidGreaterThanAsk(self):
++        quotes = [
++            {'top_ask': {'price': 119.2, 'size': 36}, 'timestamp': '2019-02-11 22:06:30.572453',
++             'top_bid': {'price': 120.48, 'size': 109}, 'id': '0.109974697771', 'stock': 'ABC'},
++            {'top_ask': {'price': 121.68, 'size': 4}, 'timestamp': '2019-02-11 22:06:30.572453',
++             'top_bid': {'price': 117.87, 'size': 81}, 'id': '0.109974697771', 'stock': 'DEF'}
++        ]
++        """ ------------ Add the assertion below ------------ """
++        for i in quotes:
++            self.assertEqual(getDataPoint(i), (i['stock'], i['top_bid']['price'], i['top_ask']['price'],
++                                               (i['top_bid']['price'] + i['top_ask']['price']) / 2))
++
++    """ ------------ Add more unit tests ------------ """
+ 
+ 
+ if __name__ == '__main__':
+diff --git a/client3.py b/new_client3.py
+similarity index 89%
+rename from client3.py
+rename to new_client3.py
+index 80602fb..1ba71bb 100644
+--- a/client3.py
++++ b/new_client3.py
+@@ -40,10 +40,9 @@ def getDataPoint(quote):
+ 
+ 
+ def getRatio(price_a, price_b):
+-    """ Get ratio of price_a and price_b """
+-    """ ------------- Update this function ------------- """
+     if price_b == 0:
+         return
++
+     return price_a / price_b
+ 
+ 
+@@ -52,10 +51,13 @@ if __name__ == "__main__":
+     # Query the price once every N seconds.
+     for _ in iter(range(N)):
+         quotes = json.loads(urllib.request.urlopen(QUERY.format(random.random())).read())
++        print(quotes)
+ 
+         """ ----------- Update to get the ratio --------------- """
+         for quote in quotes:
+             stock, bid_price, ask_price, price = getDataPoint(quote)
+             print("Quoted %s at (bid:%s, ask:%s, price:%s)" % (stock, bid_price, ask_price, price))
+ 
+-        print("Ratio %s" % getRatio(price['ABC'], price['DEG']))
++        price_a = (quotes[0]['top_bid']['price'] + quotes[0]['top_ask']['price']) / 2
++        price_b = (quotes[1]['top_bid']['price'] + quotes[1]['top_ask']['price']) / 2
++        print("Ratio %s" % getRatio(price_a, price_b))
+\ No newline at end of file
+-- 
+2.40.1.windows.1
+
